@@ -1,0 +1,11 @@
+<%
+  f = args[:f]
+  type = args[:type] || :text
+  name = args[:name]
+  placeholder = name.to_s.capitalize
+  input_classes = "#{text_color_from_variant(:dark)} w-full rounded-lg border-sky-500 border-none outline-none"
+%>
+
+<div class="mb-6">
+  <%= f.text_field(name, placeholder: placeholder, type: type, class: input_classes) %>
+</div>

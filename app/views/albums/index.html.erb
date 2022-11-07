@@ -1,0 +1,15 @@
+<div class="w-full flex justify-end">
+  <%= component :button, text: "New Album", path: new_album_path %>
+</div>
+
+<div class="w-full flex">
+  <% @albums.each do |album| %>
+    <a href="<%= album_album_entries_path(album_id: album.id) %>">
+      <%= component :card, variant: :dark, class: bg_hover_color_from_variant(:dark) do %>
+        <h4>
+          <%= album.name %>
+        </h4>
+      <% end %>
+    </a>
+  <% end %>
+</div>

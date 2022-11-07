@@ -1,0 +1,18 @@
+<%
+  path = args[:path] || nil
+  classes = "
+    px-6 py-1 #{bg_color_from_variant(args[:variant])}
+    text-white rounded-full text-sm #{bg_hover_color_from_variant(args[:variant])}
+  "
+  text = args[:text].presence || yield
+%>
+
+<% if path.present? %>
+  <a class="<%= classes %>" href="<%= path %>">
+    <%= text %>
+  </a>
+<% else %>
+  <button class="<%= classes %>">
+    <%= text %>
+  </button>
+<% end %>

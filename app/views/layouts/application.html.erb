@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <title>FamilyAlbum</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <header class="w-full flex place-content-between bg-sky-900 text-white">
+    <ul class="flex">
+      <% if logged_in? %>
+        <%= render "layouts/partials/nav_link", path: albums_path, text: "Your Family Albums" %>
+      <% end %>
+    </ul>
+
+    <ul>
+      <% if logged_in? %>
+        <%= render "layouts/partials/nav_link", path: session_path do %>
+          <%= component :button, variant: :danger do %>
+            <a data-turbo-method="delete" href="<%= session_path %>">
+              Sign Out
+            </a>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </header>
+
+  <body class="bg-slate-200">
+    <main class="container mx-auto mt-6 px-5 flex flex-col">
+      <%= yield %>
+    </main>
   </body>
 </html>

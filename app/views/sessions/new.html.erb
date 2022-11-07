@@ -1,0 +1,9 @@
+<div class="w-full flex justify-center">
+  <%= render(
+        "users/form",
+        user: @user,
+        submit_path: sessions_path,
+        btn_text: "Log In",
+        help_text: "Don't have a user yet? #{component :link, href: new_user_path, text: "Sign up"}"
+      ) %>
+</div>

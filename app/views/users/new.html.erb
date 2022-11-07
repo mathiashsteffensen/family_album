@@ -1,0 +1,8 @@
+<div class="w-full flex justify-center">
+  <%= render(
+        "form",
+        user: @user,
+        btn_text: "Create User",
+        help_text: "Already have a user? #{component :link, href: new_session_path, text: "Sign in"}"
+      ) %>
+</div>

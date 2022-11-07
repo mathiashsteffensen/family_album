@@ -1,0 +1,6 @@
+<a
+  class="underline underline-offset-2 <%= text_color_from_variant(args[:variant]) %> hover:opacity-75"
+  href="<%= args[:href] %>"
+>
+  <%= args[:text] || yield %>
+</a>

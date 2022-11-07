@@ -1,0 +1,11 @@
+
+
+<li class="hover:bg-sky-800 p-4<%= current_page?(path) ? " bg-sky-800" : "" %>">
+  <% if (text ||= nil).present? %>
+    <a href="<%= path %>">
+      <%= text %>
+    </a>
+  <% else %>
+    <%= yield %>
+  <% end %>
+</li>

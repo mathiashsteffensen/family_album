@@ -1,0 +1,17 @@
+<div class="w-full flex justify-end">
+  <%= component :button, text: "Upload" %>
+</div>
+
+<%= component :list do %>
+  <% @entries.each do |entry| %>
+    <%= component :list_item do %>
+      <div class="flex justify-between">
+        <div>
+          <%= time_ago_in_words(entry.created_at) %>
+        </div>
+
+        <%= image_tag url_for(entry.file) %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

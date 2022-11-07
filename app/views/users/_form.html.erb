@@ -1,0 +1,25 @@
+<%= component :card do %>
+  <%= form_for(user, url: (submit_path ||= nil)) do |f| %>
+    <%= component :input, f: f, name: :email %>
+    <%= component :input, f: f, name: :password, type: :password %>
+
+    <% if user.errors.any? %>
+      <%= component :alert, variant: :danger, class: "mb-3" do %>
+        <%= user.errors.full_messages.first %>
+      <% end %>
+    <% end %>
+
+    <div class="flex items-stretch flex-grow-0 justify-between w-96">
+      <% if (help_text ||= nil).present? %>
+        <p class="text-sm pt-1">
+          <%= help_text.html_safe %>
+        </p>
+      <% end %>
+
+
+      <div class="flex flex-col justify-center">
+        <%= component :button, text: btn_text %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
